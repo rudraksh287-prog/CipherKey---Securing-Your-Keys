@@ -14,7 +14,7 @@ const Manager = () => {
 
 const getpasswords= async() => {
   
-    let req=await fetch("https://cipherkey-securing-your-keys.onrender.com/")
+    let req=await fetch("https://cipherkey-securing-your-keys-1.onrender.com/")
     let passwords =  await req.json()
 
        
@@ -56,14 +56,14 @@ const getpasswords= async() => {
         if (form.site.length > 3 && form.username.length > 3 && form.password.length > 3) {
 
             if (form.id) {
-                await fetch("https://cipherkey-securing-your-keys.onrender.com/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: form.id }) })
+                await fetch("https://cipherkey-securing-your-keys-1.onrender.com/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: form.id }) })
             }
 
             const newpassword = { ...form, id: uuidv4() }
 
             setpasswordarray([...passwordarray, newpassword])
             // localStorage.setItem("passwords", JSON.stringify([...passwordarray, newpassword]))
-            await fetch("https://cipherkey-securing-your-keys.onrender.com/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newpassword) })
+            await fetch("https://cipherkey-securing-your-keys-1.onrender.com/", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(newpassword) })
 
             // console.log(...passwordarray, form)
             setform({ site: "", username: "", password: "" })
@@ -77,7 +77,7 @@ const getpasswords= async() => {
         if (c) {
             setpasswordarray(passwordarray.filter(item => item.id !== id))
             
-            await fetch("https://cipherkey-securing-your-keys.onrender.com/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) })
+            await fetch("https://cipherkey-securing-your-keys-1.onrender.com/", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) })
 
             toast('Password Deleted!', {
                 position: "bottom-left",
